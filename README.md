@@ -26,7 +26,7 @@ import createReduxStore from 'create-redux-store';
 const store = createReduxStore(reduser,middleware);
 ```
 ```
-reduser - Function or Object
+reduser - Function or Object 
 middleware - Function or the array of functions
 ```
 ***

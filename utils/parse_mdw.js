@@ -1,8 +1,12 @@
+var isFunction = require('lodash/isFunction');
+var isArray = require('lodash/isArray');
+var isObject = require('lodash/isPlainObject');
+
 var getFn = function(mdws) {
 	return function(store) {
 		return function(next) {
 			return function(action) {
-				if (mdws[action.type] && typeof mdws[action.type] == 'function') {
+				if (mdws[action.type]) {
 
 					mdws[action.type](store, next, action.payload, action)
 
@@ -17,14 +21,17 @@ var getFn = function(mdws) {
 
 module.exports = function(arr) {
 	var res = [];
-	if (!arr || !arr.length || typeof arr != 'object') {
+
+	if (isFunction(arr)) {
+		arr = [arr];
+	} else if (!arr || !isArray(arr)) {
 		arr = [];
 	}
 
 	for (var i = 0; i < arr.length; i++) {
-		if (typeof arr[i] == 'function') {
+		if (isFunction(arr[i])) {
 			res.push(arr[i])
-		} else if (typeof arr[i] == 'object') {
+		} else if (isObject(arr[i])) {
 			res.push(getFn(arr[i]))
 		}
 	}

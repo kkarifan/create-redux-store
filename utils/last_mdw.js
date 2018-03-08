@@ -1,33 +1,26 @@
 var cache = [];
-var tid = null;
+var isIn = false;
 
 module.exports = function(store) {
 	return function(next) {
 		return function(action) {
-			console.log('last MDV');
 
-			if (action.type == '@@ERROR') {
-				if (process.env.NODE_ENV == 'development') {
-					console.error(action.error)
-				}
-				return;
-			} else if (action._isArray) {
-				delete action._isArray;
+			if (isIn) {
 				cache.push(action);
-				if (!tid) {
-					tid = setTimeout(function(){
-						next({
-							type : '@@ARRAY',
-							payload : [].concat(cache)
-						})
-						cache = [];
-						tid = null;
-					},10)
-				}
+			} else if (!isIn && action.__isArray) {
+				cache.push(action);
+				isIn = true;
+				setTimeout(function(){
+					next({
+						type : '@@ARRAY',
+						payload : cache
+					});
+					cache = [];
+					isIn = false;
+				},1);
 			} else {
-				next(action)
+				next(action);
 			}
-
 
 		}
 	}

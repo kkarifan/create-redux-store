@@ -1,12 +1,14 @@
 var redux = require('redux');
 var combineReducers = redux.combineReducers;
+var isObject = require('lodash/isPlainObject');
+var isFunction = require('lodash/isFunction');
 
-
+var errorMsg = 'Reduser must be a Function';
 var reduserWrapper = function(reduser) {
 
 	return function(state, action) {
-		if (action.type == '@@ARRAY') {
-			if (!action.payload || action.payload.length == 0) return state;
+		if (action.type == '@@ARRAY' && isArray(action.payload)) {
+			if (action.payload.length == 0) return state;
 			for (var i = 0; i < action.payload.length; i++) {
 				state = reduser(state, action.payload[i])
 			}
@@ -18,20 +20,20 @@ var reduserWrapper = function(reduser) {
 }
 
 
-module.exports = function(redusers, options) {
-	if (typeof redusers == 'function') {
+module.exports = function(redusers) {
+	if (isFunction(redusers)) {
 		return reduserWrapper(redusers);
-	} else if (typeof redusers == 'object') {
+	} else if (isObject(redusers)) {
 		var res = {}
 		for (var i in redusers) {
-			if (typeof redusers[i] != 'function') {
-				throw new Error('Reduser must be a Function')
+			if (!isFunction(redusers[i])) {
+				throw new Error(errorMsg)
 			}
 
 			res[i] = reduserWrapper(redusers[i])
 		}
 		return combineReducers(res)
 	} else {
-		return null;
+		throw new Error(errorMsg)
 	}
 }

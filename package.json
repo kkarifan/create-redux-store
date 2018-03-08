@@ -1,6 +1,6 @@
 {
   "name": "create-redux-store",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Util for create redux store",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,10 @@
     "redux",
     "store"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkarifan/create-redux-store"
+  },
   "dependencies": {
     "ispromise": "^1.1.0",
     "lodash": "^4.17.5",
