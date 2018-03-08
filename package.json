@@ -1,0 +1,21 @@
+{
+  "name": "create-redux-store",
+  "version": "0.1.3",
+  "description": "Util for create redux store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "JavaScript",
+    "js",
+    "redux",
+    "store"
+  ],
+  "dependencies": {
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2"
+  }
+}
