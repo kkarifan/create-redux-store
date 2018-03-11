@@ -2,6 +2,7 @@ var redux = require('redux');
 var combineReducers = redux.combineReducers;
 var isObject = require('lodash/isPlainObject');
 var isFunction = require('lodash/isFunction');
+var isArray = require('lodash/isArray');
 
 var errorMsg = 'Reduser must be a Function';
 var reduserWrapper = function(reduser) {

@@ -17,7 +17,7 @@ module.exports = function(store) {
 					});
 					cache = [];
 					isIn = false;
-				},1);
+				},0);
 			} else {
 				next(action);
 			}

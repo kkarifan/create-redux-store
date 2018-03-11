@@ -1,9 +1,18 @@
 {
   "name": "create-redux-store",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Util for create redux store",
   "main": "index.js",
   "scripts": {
+    "test:redusers": "node ./tests/object_redusers",
+    "test:string": "node ./tests/string",
+    "test:error": "node ./tests/error",
+    "test:promise": "node ./tests/promise",
+    "test:array": "node ./tests/array",
+    "test:mixedarray": "node ./tests/mixed_array",
+    "test:perf": "node ./tests/performance",
+    "test:mdw": "node ./tests/middlewares",
+    "test:objectmdw": "node ./tests/object_middlewares",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +26,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kkarifan/create-redux-store"
+  },
+  "bugs": {
+    "url": "https://github.com/kkarifan/create-redux-store/issues"
   },
   "dependencies": {
     "ispromise": "^1.1.0",

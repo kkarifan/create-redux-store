@@ -25,10 +25,9 @@ module.exports = function(store) {
 
 	return function(next) {
 		return function(action) {
-
-			action = parse(action);
-			if (action) {
-				return next(action)
+			var pa = parse(action);
+			if (pa) {
+				return next(pa)
 			}
 
 			if (isPromise(action)) {
@@ -37,8 +36,10 @@ module.exports = function(store) {
 
 				for (var i = 0; i < action.length; i++) {
 					var ac = parse(action[i])
-					if (ac || ac === false) {
-						ac.__asArray = true;
+					if (ac) {
+						ac.__isArray = true;
+						next(ac)
+					} else if (ac == false) {
 						store.dispatch(action[i])
 					}
 				}

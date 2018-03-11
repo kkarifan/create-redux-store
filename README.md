@@ -60,6 +60,36 @@ store.dispatch([
 >If NODE_ENV=development, [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) is automatically connected
 
 ***
+
+### more tests
+
+https://github.com/kkarifan/create-redux-store/tree/master/tests
+
+
+***OR:***
+
+
+> npm run test:redusers
+
+> npm run test:string
+
+> npm run test:error
+
+> npm run test:promise
+
+> npm run test:array
+
+> npm run test:mixedarray
+
+> npm run test:perf
+
+> npm run test:mdw
+
+> npm run test:objectmdw
+
+
+***
+
 ### Author:
 >*npmjs.com*: [karifan](https://www.npmjs.com/~karifan)
 
