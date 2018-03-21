@@ -89,10 +89,3 @@ https://github.com/kkarifan/create-redux-store/tree/master/tests
 
 
 ***
-
-### Author:
->*npmjs.com*: [karifan](https://www.npmjs.com/~karifan)
-
->*github.com*: [kkarifan](https://github.com/kkarifan)
-
->*email*: karifan.stap@gmail.com
